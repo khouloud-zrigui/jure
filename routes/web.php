@@ -23,21 +23,32 @@ Route::get('/', function () {
     return ('welcome');
 });
 //TWEETS
-Route::post('/tweets', [TweetController::class, 'store']);
+Route::post('/tweets', [TweetController::class, 'create']);
 Route::get('/tweets', [TweetController::class, 'index']);
 Route::get('/tweets/{id}', [TweetController::class, 'show']);
-Route::delete('/tweets/{id}', [TweetController::class, 'destroy']);
+Route::delete('/tweets/{id}', [TweetController::class, 'deleteTweets']);
+Route::put('/tweets/{id}', [TweetController::class, 'updateTweets']);
+
 
 //sponsors
 Route::get('/sponsors', [SponsorsController::class, 'index']);
 Route::get('/sponsors/{id}', [SponsorsController::class, 'show']);
-Route::post('/sponsors', [SponsorsController::class, 'store']);
-
+Route::post('/sponsors', [SponsorsController::class, 'create']);
+Route::delete('/sponsors/{id}', [SponsorsController::class, 'deleteSponsors']);
+Route::put('/sponsors/{id}', [SponsorsController::class, 'updateSponsors']);
 
 
 //Organizers
 Route::get('/organizers', [OrganizersController::class, 'index']);
 Route::get('/organizers/{id}', [OrganizersController::class, 'show']);
+Route::delete('/organizers/{id}', [OrganizersController::class, 'deleteOrganizers']);
+Route::post('/organizers', [OrganizersController::class, 'create']);
+Route::put('/organizers/{id}', [OrganizersController::class, 'updateOrganizers']);
+
+
 //KEYNOTESPEAKERS
 Route::get('/keynotespeakers', [KeynotespeakersController::class, 'index']);
 Route::get('/keynotespeakers/{id}', [KeynotespeakersController::class, 'show']);
+Route::delete('/keynotespeakers/{id}', [KeynotespeakersController::class, 'deleteKeynotespeakers']);
+Route::post('/keynotespeakers', [KeynotespeakersController::class, 'create']);
+Route::put('/keynotespeakers/{id}', [KeynotespeakersController::class, 'updateKeynotespeakers']);

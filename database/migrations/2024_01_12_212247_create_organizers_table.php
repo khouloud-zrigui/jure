@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('organizers', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id')->autoIncrement(false)->primary();
             $table->string('src');
             $table->string('alt');
             $table->integer('order');
