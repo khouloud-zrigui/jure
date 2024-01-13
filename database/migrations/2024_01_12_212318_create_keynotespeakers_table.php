@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keynotespeakers', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger('id')->autoIncrement(false)->primary();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('description');
@@ -26,5 +26,18 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('keynotespeakers');
+    }
+
+    public function destroy($id)
+    {
+        $keynotespeaker = Keynotespeakers::find($id);
+
+        if (is_null($keynotespeaker)) {
+            return response()->json(['message' => 'Keynotespeaker not found'], 404);
+        }
+
+        $keynotespeaker->delete();
+
+        return response()->json(['message' => 'Keynotespeaker deleted successfully']);
     }
 };

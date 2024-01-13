@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Organizers extends Model
 {
     use HasFactory;
+    protected $fillable = ['src', 'alt','order'];
+
+    public $timestamps = false;
 }
