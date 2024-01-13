@@ -34,6 +34,8 @@ Route::get('/sponsors', [SponsorsController::class, 'index']);
 Route::get('/sponsors/{id}', [SponsorsController::class, 'show']);
 Route::post('/sponsors', [SponsorsController::class, 'store']);
 
+
+
 //Organizers
 Route::get('/organizers', [OrganizersController::class, 'index']);
 Route::get('/organizers/{id}', [OrganizersController::class, 'show']);
