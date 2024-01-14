@@ -17,3 +17,4 @@ Route::get('link/get/{id}',[LinkController::class,'getById']);
 Route::get('link/by-href/{href}',[LinkController::class,'getByHref']);
 
 Route::get('authors', [AuthorsController::class,'index']);
+Route::post('authors',[AuthorsController::class, 'add']);
