@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+<<<<<<< HEAD
 use App\Http\Controllers\AuthorsController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\SessionController;
@@ -15,11 +16,16 @@ use App\Http\Controllers\SessionController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+=======
+
+
+>>>>>>> af264d4df359c407d725528c0c3d9221679a3894
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+<<<<<<< HEAD
 
 
 Route::get('authors', [AuthorsController::class,'index']);
@@ -45,3 +51,12 @@ Route::delete('session/delete/{id}',[SessionController::class, 'delete']);
 Route::get('session/{id}',[SessionController::class,'getSessionById']);
 Route::get('session/{title}',[SessionController::class,'getSessionByTitle']);
 Route::get('session/orderBy',[SessionController::class,'orderBy']);
+=======
+use App\Http\Controllers\Api\LinkController;
+Route::get('link',[LinkController::class,'get']);
+Route::post('link',[LinkController::class,'add']);
+Route::put('link/edit/{id}',[LinkController::class,'update']);
+Route::delete('link/delete/{id}',[LinkController::class,'delete']);
+Route::get('link/get/{id}',[LinkController::class,'getById']);
+Route::get('link/by-href/{href}',[LinkController::class,'getByHref']);
+>>>>>>> af264d4df359c407d725528c0c3d9221679a3894
