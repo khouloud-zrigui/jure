@@ -15,3 +15,7 @@ Route::put('link/edit/{id}',[LinkController::class,'update']);
 Route::delete('link/delete/{id}',[LinkController::class,'delete']);
 Route::get('link/get/{id}',[LinkController::class,'getById']);
 Route::get('link/by-href/{href}',[LinkController::class,'getByHref']);
+
+use App\Http\Controllers\Api\pagesController;
+Route::get('pages',[pagesController::class,'get']);
+Route::post('pages',[pagesController::class,'add']);
