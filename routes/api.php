@@ -21,3 +21,4 @@ Route::get('pages',[pagesController::class,'get']);
 Route::post('pages',[pagesController::class,'add']);
 Route::put('pages/edit/{id}',[pagesController::class,'update']);
 Route::delete('pages/delete/{id}',[pagesController::class,'delete']);
+Route::get('pages/get/{id}',[pagesController::class,'getById']);

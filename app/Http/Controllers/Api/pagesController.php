@@ -104,4 +104,25 @@ public function delete($id)
     return response()->json($data, $data['status']);
 }
 
+// Récupèrer un lien par son id de la base de données.
+public function getById(Request $request , $id)
+{
+    $pages = pages::find($id);
+
+    if (!$pages) {
+        $data = [
+            'status' => 404,
+            'message' => 'page not found',
+        ];
+
+        return response()->json($data, 404);
+    }
+
+    $data = [
+        'status' => 200,
+        'pages' => $pages,
+    ];
+
+    return response()->json($data, 200);
+}
 }
