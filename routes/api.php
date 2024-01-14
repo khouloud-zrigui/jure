@@ -22,3 +22,11 @@ Route::post('pages',[pagesController::class,'add']);
 Route::put('pages/edit/{id}',[pagesController::class,'update']);
 Route::delete('pages/delete/{id}',[pagesController::class,'delete']);
 Route::get('pages/get/{id}',[pagesController::class,'getById']);
+
+use App\Http\Controllers\Api\photosController;
+Route::get('photos',[photosController::class,'get']);
+Route::post('photos',[photosController::class,'add']);
+Route::put('photos/edit/{id}',[photosController::class,'update']);
+Route::delete('photos/delete/{id}',[photosController::class,'delete']);
+Route::get('photos/get/{id}',[photosController::class,'getById']);
+Route::get('photos/order-by',[photosController::class,'orderBy']);
