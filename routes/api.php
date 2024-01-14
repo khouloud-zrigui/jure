@@ -30,3 +30,11 @@ Route::put('photos/edit/{id}',[photosController::class,'update']);
 Route::delete('photos/delete/{id}',[photosController::class,'delete']);
 Route::get('photos/get/{id}',[photosController::class,'getById']);
 Route::get('photos/order-by',[photosController::class,'orderBy']);
+
+use App\Http\Controllers\Api\videosController;
+Route::get('videos',[videosController::class,'get']);
+Route::post('videos',[videosController::class,'add']);
+Route::put('videos/edit/{id}',[videosController::class,'update']);
+Route::delete('videos/delete/{id}',[videosController::class,'delete']);
+Route::get('videos/get/{id}',[videosController::class,'getById']);
+Route::get('videos/order-by',[videosController::class,'orderBy']);
