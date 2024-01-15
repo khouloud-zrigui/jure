@@ -19,7 +19,7 @@ class AuthorsController extends Controller
         return response()->json($data,200);
         
     }
-    // ajouter un lien de la base de données.
+    // ajouter un authors de la base de données.
     public function add(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -52,7 +52,7 @@ else
 }
 
 }
-// modifier un lien par son id de la base de données.
+// modifier un authors par son id de la base de données.
 
 public function edit(Request $request, $id){
 
@@ -85,7 +85,7 @@ public function edit(Request $request, $id){
 
 }
 
-// supprimer un lien par son id de la base de données.
+// supprimer un authors par son id de la base de données.
 public function delete($id){
     $authors=Authors::find($id);
     $authors->delete();
@@ -94,6 +94,16 @@ public function delete($id){
         "message"=>'Data deleted successfully'
     ];
     return response()->json($data,200);
+}
+// Récupèrer un authors par son id de la base de données.
+
+public function getAuthorsById($id){ 
+
+    $authors= Authors::find($id); 
+    if(is_null($authors)){ 
+    return response()->json(['message' => 'Authors not fond'],404); 
+    } 
+    return response()->json($authors::find($id),200);
 }
 
 }
