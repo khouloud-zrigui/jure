@@ -52,4 +52,36 @@ else
 }
 
 }
+// modifier un lien par son id de la base de données.
+
+public function edit(Request $request, $id){
+
+    $validator = Validator::make($request->all(),
+    ['firstname'=>'required',
+    'lastname' =>'required',
+    'organism' =>'required'
+    ]);
+    if($validator->fails())
+    {
+        $data=[
+            "status"=>422,
+            "message"=>$validator->messages()
+        ];
+        return response()->json($data,422);
+    }
+    else{
+        $authors = Authors::find($id);
+        $authors->firstname=$request->firstname;
+        $authors->lastname=$request->lastname;
+        $authors->organism=$request->organism;
+        $authors->save();
+        $data=[
+            "status"=>200,
+            "message"=>'Data updated successfully'
+        ];
+        return response()->json($data,200);   
+    } 
+
+}
+
 }

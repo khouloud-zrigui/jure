@@ -18,3 +18,4 @@ Route::get('link/by-href/{href}',[LinkController::class,'getByHref']);
 
 Route::get('authors', [AuthorsController::class,'index']);
 Route::post('authors',[AuthorsController::class, 'add']);
+Route::put('authors/edit/{id}',[AuthorsController::class,'edit']);
