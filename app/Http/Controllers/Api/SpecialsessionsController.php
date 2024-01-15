@@ -99,15 +99,13 @@ class SpecialsessionsController extends Controller
 }
 // Get Specila session by id
 public function getSessionById($id){ 
-
     $session= Specialsessions::find($id); 
-
     if(is_null($session)){ 
-    return response()->json(['message' => 'Special Session not fond'],404); 
+    return response()->json(['message' => 'Special Session ID not fond'],404); 
     } 
-
     return response()->json($session::find($id),200);
 }
+
 //Get Special session by title 
 public function getSessionByTitle(Request $request, $title){ 
 
@@ -115,7 +113,7 @@ public function getSessionByTitle(Request $request, $title){
         if (!$session) {
             $data = [
                 'status' => 404,
-                'message' => 'Special session not found',
+                'message' => 'Title of Special session not found',
             ];
             return response()->json($data, 404);
         }
@@ -126,4 +124,29 @@ public function getSessionByTitle(Request $request, $title){
         return response()->json($data, 200);
     }
 
+//Special session orderBy order
+
+public function orderBy(Request $request, $direction = 'asc')
+{
+    $validDirections = ['asc', 'desc'];
+ 
+    // Vérifie si la direction spécifiée est valide
+    if (!in_array($direction, $validDirections)) {
+        $data = [
+            'status' => 400,
+            'message' => 'Invalid sorting direction. Use "asc" or "desc".',
+        ];
+        return response()->json($data, 400);
+    }
+ 
+    // Récupère les special session triées selon l'ordre spécifié
+    $session = Specialsessions::orderBy('order', $direction)->get();
+ 
+    $data = [
+        'status' => 200,
+        'Specialsessions' => $session,
+    ];
+ 
+    return response()->json($data, 200);
+}
 }
