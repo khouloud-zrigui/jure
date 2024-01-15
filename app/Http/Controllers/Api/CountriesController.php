@@ -51,5 +51,37 @@ class CountriesController extends Controller
         }
         
     }
+// éditer un countries de la base de données.
+    public function edit(Request $request, $id){
+
+        $validator = Validator::make($request->all(),[
+            'name'=> 'required',
+            
+        ]);
+        if($validator->fails())
+        {
+            $data=[
+                "status"=>422,
+                "message"=>$validator->messages()
+            ];
+            return response()->json($data,422);
+        }
+        else{
+            $countries = Countries::find($id);
+            $countries->name=$request->name;
+           
+    
+            $countries->save();
+            $data=[
+                "status"=>200,
+                "message"=>'Data updated successfully'
+            ];
+    
+            return response()->json($data,200);
+    
+             
+        } 
+    
+    }
 
 }
