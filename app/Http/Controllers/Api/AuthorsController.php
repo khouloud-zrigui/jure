@@ -57,10 +57,11 @@ else
 public function edit(Request $request, $id){
 
     $validator = Validator::make($request->all(),
-    ['firstname'=>'required',
-    'lastname' =>'required',
-    'organism' =>'required'
+    [   'firstname'=>'required',
+        'lastname' =>'required',
+        'organism' =>'required'
     ]);
+
     if($validator->fails())
     {
         $data=[
@@ -82,6 +83,17 @@ public function edit(Request $request, $id){
         return response()->json($data,200);   
     } 
 
+}
+
+// supprimer un lien par son id de la base de données.
+public function delete($id){
+    $authors=Authors::find($id);
+    $authors->delete();
+    $data=[
+        "status"=>200,
+        "message"=>'Data deleted successfully'
+    ];
+    return response()->json($data,200);
 }
 
 }
