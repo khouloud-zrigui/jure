@@ -28,3 +28,4 @@ Route::get('countries', [CountriesController::class,'index']);
 Route::post('countries',[CountriesController::class, 'store']);
 Route::put('countries/edit/{id}',[CountriesController::class, 'edit']);
 Route::delete('countries/delete/{id}',[CountriesController::class, 'delete']);
+Route::get('countries/{id}',[CountriesController::class,'getCountriesById']);

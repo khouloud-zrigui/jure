@@ -94,6 +94,13 @@ class CountriesController extends Controller
         ];
      return response()->json($data,200);
     }
-    
+// get countries by id de la base de données.
 
+    public function getCountriesById($id){ 
+        $countries= Countries::find($id); 
+        if(is_null($countries)){ 
+        return response()->json(['message' => 'Countries not fond'],404); 
+        } 
+        return response()->json($countries::find($id),200);
+    }
 }
