@@ -52,4 +52,38 @@ class SpecialsessionsController extends Controller
         }
         
     }
+    // modifier une special session selon id
+    public function edit(Request $request, $id){
+
+        $validator = Validator::make($request->all(),[
+           'title'=> 'required',
+           'description' => 'required',
+           'order' => 'required'
+       ]);
+       if($validator->fails())
+       {
+           $data=[
+               "status"=>422,
+               "message"=>$validator->messages()
+           ];
+           return response()->json($data,422);
+       }
+       else{
+           $session = Specialsessions::find($id);
+           $session->title=$request->title;
+           $session->description=$request->description;
+           $session->order=$request->order;
+
+           $session->save();
+           $data=[
+               "status"=>200,
+               "message"=>'Data updated successfully'
+           ];
+
+       
+           return response()->json($data,200);        
+
+       } 
+
+   }
 }
