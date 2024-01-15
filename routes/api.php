@@ -36,3 +36,4 @@ Route::get('session', [SpecialsessionsController::class,'index']);
 Route::post('session',[SpecialsessionsController::class, 'store']);
 Route::put('session/edit/{id}',[SpecialsessionsController::class, 'edit']);
 Route::delete('session/delete/{id}',[SpecialsessionsController::class, 'delete']);
+Route::get('session/{id}',[SpecialsessionsController::class,'getSessionById']);

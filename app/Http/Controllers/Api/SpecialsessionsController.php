@@ -97,5 +97,16 @@ class SpecialsessionsController extends Controller
     ];
     return response()->json($data,200);
 }
+// Get Specila session by id
+public function getSessionById($id){ 
+
+    $session= Specialsessions::find($id); 
+
+    if(is_null($session)){ 
+    return response()->json(['message' => 'Special Session not fond'],404); 
+    } 
+
+    return response()->json($session::find($id),200);
+}
 
 }
