@@ -103,4 +103,23 @@ class CountriesController extends Controller
         } 
         return response()->json($countries::find($id),200);
     }
+
+ // Récupèrer countries par son name de la base de données.
+public function getCountriesByName(Request $request, $name){
+    {   $countries = Countries::where('name', $name)->first();
+        if (!$countries) {
+            $data = [
+                'status' => 404,
+                'message' => 'Countries not found',
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'status' => 200,
+            'name' => $countries,
+        ];
+        return response()->json($data, 200);
+    }
+    
+    }
 }
