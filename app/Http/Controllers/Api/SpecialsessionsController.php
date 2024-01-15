@@ -108,5 +108,22 @@ public function getSessionById($id){
 
     return response()->json($session::find($id),200);
 }
+//Get Special session by title 
+public function getSessionByTitle(Request $request, $title){ 
+
+    $session = Specialsessions::where('title', $title)->first();
+        if (!$session) {
+            $data = [
+                'status' => 404,
+                'message' => 'Special session not found',
+            ];
+            return response()->json($data, 404);
+        }
+        $data = [
+            'status' => 200,
+            'title' => $session,
+        ];
+        return response()->json($data, 200);
+    }
 
 }
