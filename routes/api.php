@@ -25,3 +25,4 @@ Route::get('authors/{id}',[AuthorsController::class,'getAuthorsById']);
 Route::get('authors/by_last_name/{lastname}',[AuthorsController::class,'getAuthorsByLastname']);
 
 Route::get('countries', [CountriesController::class,'index']);
+Route::post('countries',[CountriesController::class, 'store']);
