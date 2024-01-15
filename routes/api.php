@@ -33,3 +33,4 @@ Route::get('countries/{id}',[CountriesController::class,'getCountriesById']);
 Route::get('countries/byname/{name}',[CountriesController::class,'getCountriesByName']);
 
 Route::get('session', [SpecialsessionsController::class,'index']);
+Route::post('session',[SpecialsessionsController::class, 'store']);

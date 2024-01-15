@@ -20,4 +20,36 @@ class SpecialsessionsController extends Controller
         return response()->json($data,200);
         
     }
+    //Ajouter une session special 
+    public function store(Request $request){
+        $validator = Validator::make($request->all(),[
+            'title'=> 'required',
+            'description' => 'required',
+            'order' => 'required'
+        ]);
+        if($validator->fails())
+        {
+            $data=[
+                "status"=>422,
+                "message"=>$validator->messages()
+            ];
+            return response()->json($data,422);
+        }
+        else{
+            $session = new Specialsessions;
+            $session->title=$request->title;
+            $session->description=$request->description;
+            $session->order=$request->order;
+
+            $session->save();
+            $data=[
+                "status"=>200,
+                "message"=>'Data uploaded successfully'
+            ];
+
+            return response()->json($data,200);
+    
+        }
+        
+    }
 }
