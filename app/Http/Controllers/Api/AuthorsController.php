@@ -101,9 +101,27 @@ public function getAuthorsById($id){
 
     $authors= Authors::find($id); 
     if(is_null($authors)){ 
-    return response()->json(['message' => 'Authors not fond'],404); 
+    return response()->json(['message' => 'Authors ID not fond'],404); 
     } 
     return response()->json($authors::find($id),200);
 }
 
+// Récupèrer un authors par son lastname de la base de données.
+public function getAuthorsByLastname(Request $request, $lastname){
+{   $authors = Authors::where('lastname', $lastname)->first();
+    if (!$authors) {
+        $data = [
+            'status' => 404,
+            'message' => 'Link not found',
+        ];
+        return response()->json($data, 404);
+    }
+    $data = [
+        'status' => 200,
+        'lastname' => $authors,
+    ];
+    return response()->json($data, 200);
+}
+
+}
 }

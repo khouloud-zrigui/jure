@@ -21,3 +21,4 @@ Route::post('authors',[AuthorsController::class, 'add']);
 Route::put('authors/edit/{id}',[AuthorsController::class,'edit']);
 Route::delete('authors/delete/{id}',[AuthorsController::class,'delete']);
 Route::get('authors/{id}',[AuthorsController::class,'getAuthorsById']);
+Route::get('authors/by_last_name/{lastname}',[AuthorsController::class,'getAuthorsByLastname']);
