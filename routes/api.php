@@ -18,6 +18,33 @@ Route::delete('link/delete/{id}',[LinkController::class,'delete']);
 Route::get('link/get/{id}',[LinkController::class,'getById']);
 Route::get('link/by-href/{href}',[LinkController::class,'getByHref']);
 
+
+
+use App\Http\Controllers\Api\pagesController;
+Route::get('pages',[pagesController::class,'get']);
+Route::post('pages',[pagesController::class,'add']);
+Route::put('pages/edit/{id}',[pagesController::class,'update']);
+Route::delete('pages/delete/{id}',[pagesController::class,'delete']);
+Route::get('pages/get/{id}',[pagesController::class,'getById']);
+
+use App\Http\Controllers\Api\photosController;
+Route::get('photos',[photosController::class,'get']);
+Route::post('photos',[photosController::class,'add']);
+Route::put('photos/edit/{id}',[photosController::class,'update']);
+Route::delete('photos/delete/{id}',[photosController::class,'delete']);
+Route::get('photos/get/{id}',[photosController::class,'getById']);
+Route::get('photos/order-by',[photosController::class,'orderBy']);
+
+use App\Http\Controllers\Api\videosController;
+Route::get('videos',[videosController::class,'get']);
+Route::post('videos',[videosController::class,'add']);
+Route::put('videos/edit/{id}',[videosController::class,'update']);
+Route::delete('videos/delete/{id}',[videosController::class,'delete']);
+Route::get('videos/get/{id}',[videosController::class,'getById']);
+Route::get('videos/order-by',[videosController::class,'orderBy']);
+
+
+
 Route::get('authors', [AuthorsController::class,'index']);
 Route::post('authors',[AuthorsController::class, 'add']);
 Route::put('authors/edit/{id}',[AuthorsController::class,'edit']);
