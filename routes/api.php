@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthorsController;
 use App\Http\Controllers\Api\CountriesController;
+use App\Http\Controllers\Api\SpecialsessionsController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -30,3 +31,5 @@ Route::put('countries/edit/{id}',[CountriesController::class, 'edit']);
 Route::delete('countries/delete/{id}',[CountriesController::class, 'delete']);
 Route::get('countries/{id}',[CountriesController::class,'getCountriesById']);
 Route::get('countries/byname/{name}',[CountriesController::class,'getCountriesByName']);
+
+Route::get('session', [SpecialsessionsController::class,'index']);
