@@ -8,7 +8,7 @@ use App\Models\Authors;
 use Validator;
 
 class AuthorsController extends Controller
-{
+{// getall  authors de la base de données.
     public function index(){
 
         $authors = Authors::all();

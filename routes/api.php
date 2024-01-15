@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthorsController;
+use App\Http\Controllers\Api\CountriesController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -22,3 +23,5 @@ Route::put('authors/edit/{id}',[AuthorsController::class,'edit']);
 Route::delete('authors/delete/{id}',[AuthorsController::class,'delete']);
 Route::get('authors/{id}',[AuthorsController::class,'getAuthorsById']);
 Route::get('authors/by_last_name/{lastname}',[AuthorsController::class,'getAuthorsByLastname']);
+
+Route::get('countries', [CountriesController::class,'index']);
