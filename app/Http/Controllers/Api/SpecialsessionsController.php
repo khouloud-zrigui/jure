@@ -86,4 +86,16 @@ class SpecialsessionsController extends Controller
        } 
 
    }
+   //Supprimer une special session selon id
+
+   public function delete($id){
+    $session=Specialsessions::find($id);
+    $session->delete();
+    $data=[
+        "status"=>200,
+        "message"=>'Data deleted successfully'
+    ];
+    return response()->json($data,200);
+}
+
 }
