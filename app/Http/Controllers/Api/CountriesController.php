@@ -83,5 +83,17 @@ class CountriesController extends Controller
         } 
     
     }
+// delete un countries de la base de données.
+    public function delete($id){
+        $countries=Countries::find($id);
+        $countries->delete();
+    
+        $data=[
+            "status"=>200,
+            "message"=>'Data deleted successfully'
+        ];
+     return response()->json($data,200);
+    }
+    
 
 }

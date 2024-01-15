@@ -27,3 +27,4 @@ Route::get('authors/by_last_name/{lastname}',[AuthorsController::class,'getAutho
 Route::get('countries', [CountriesController::class,'index']);
 Route::post('countries',[CountriesController::class, 'store']);
 Route::put('countries/edit/{id}',[CountriesController::class, 'edit']);
+Route::delete('countries/delete/{id}',[CountriesController::class, 'delete']);
